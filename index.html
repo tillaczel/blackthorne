@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050705">
+  <meta name="description" content="Halloween at the Blackthorne Institute. 30 October 2026, 18:00, Zürich. Costume required.">
+  <title>Blackthorne Institute · Admission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="landing">
+    <div class="scene" aria-hidden="true">
+      <div class="scene-frame">
+        <div class="scene-image"></div>
+        <div class="lamp-glow lamp-white"></div>
+        <div class="lamp-glow lamp-red"></div>
+        <div class="floor-reflections"></div>
+      </div>
+      <div class="lightning-flash"></div>
+      <div class="fog fog-back"></div>
+      <div class="fog fog-front"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <header>
+      <a class="clinic-mark" href="#" aria-label="Blackthorne Institute">
+        <span>Blackthorne Institute</span>
+      </a>
+      <div class="controls">
+        <button id="soundToggle" class="icon-button" type="button" aria-pressed="false" aria-label="Play clinic ambience">
+          <span class="sound-bars"><i></i><i></i><i></i></span>
+        </button>
+        <button id="languageToggle" class="language-button" type="button" aria-label="Switch language">DE</button>
+      </div>
+    </header>
+
+    <section class="invitation">
+      <p class="case-number" data-en="Patient intake · Case 7713-A" data-de="Patientenaufnahme · Akte 7713-A">Patient intake · Case 7713-A</p>
+      <h1>Blackthorne Institute</h1>
+      <div class="admission-row">
+        <div class="summons">
+          <p data-en="You have been selected for medical assessment." data-de="Sie wurden für eine medizinische Untersuchung ausgewählt.">You have been selected for medical assessment.</p>
+          <p data-en="Please report to admissions before the doors are sealed." data-de="Bitte melden Sie sich bei der Aufnahme, bevor die Türen versiegelt werden.">Please report to admissions before the doors are sealed.</p>
+        </div>
+        <button class="admission-stamp" id="openCheckin" type="button" aria-label="Open check-in">
+          <span>Admission</span><strong>30 OCT 2026</strong><u>Check-In</u>
+        </button>
+      </div>
+
+    </section>
+
+    <div class="bottom-info">
+      <div class="event-details">
+        <div><span data-en="Date" data-de="Datum">Date</span><strong>30.10.2026</strong></div>
+        <div><span data-en="Admission" data-de="Aufnahme">Admission</span><strong>18:00</strong></div>
+        <div><span data-en="Location" data-de="Ort">Location</span><strong>Hagenholzstrasse 82<br>8050 Zürich</strong></div>
+        <div class="costume-detail"><span data-en="Costume required" data-de="Kostüm obligatorisch">Costume required</span><strong data-en="Scary or completely mad." data-de="Gruselig oder völlig verrückt.">Scary or completely mad.</strong></div>
+      </div>
+    </div>
+    <p class="footer-line">Halloween Party · Ward C · 18:00</p>
+  </main>
+
+  <dialog id="checkinDialog" class="checkin-dialog">
+    <button class="close-dialog" id="closeCheckin" type="button" aria-label="Close">×</button>
+    <div class="form-view" id="formView">
+      <p class="form-code">FORM 13-C · EARLY ADMISSION</p>
+      <h2 data-en="Commit yourself" data-de="Selbsteinweisung">Commit yourself</h2>
+      <p data-en="Name and headcount. We'll take it from there." data-de="Name und Anzahl Personen. Den Rest übernehmen wir.">Name and headcount. We'll take it from there.</p>
+      <form id="checkinForm">
+        <label><span data-en="Patient name" data-de="Patientenname">Patient name</span><input id="patientName" name="patientName" autocomplete="name" required></label>
+        <label><span data-en="Bringing anyone? How many" data-de="Begleitpersonen">Bringing anyone? How many</span><input id="additionalPatients" name="additionalPatients" type="number" min="0" max="20" value="0" inputmode="numeric"></label>
+        <p class="form-error" id="checkinError" role="alert" hidden data-en="The clinic didn't receive your form. Check your connection and try again." data-de="Die Klinik hat Ihr Formular nicht erhalten. Prüfen Sie Ihre Verbindung und versuchen Sie es nochmal.">The clinic didn't receive your form. Check your connection and try again.</p>
+        <button class="confirm-button" type="submit" data-en="Confirm admission" data-de="Aufnahme bestätigen">Confirm admission</button>
+      </form>
+    </div>
+
+    <section class="patient-result" id="patientResult" hidden>
+      <p class="form-code" data-en="Admission confirmed" data-de="Aufnahme bestätigt">Admission confirmed</p>
+      <div class="assigned-card">
+        <div class="random-portrait" id="randomPortrait" role="img" aria-label="Assigned fictional patient portrait"></div>
+        <div class="card-copy">
+          <span id="assignedNumber">PATIENT 000</span>
+          <h2 id="assignedName">Patient Name</h2>
+          <p data-en="Reason for admission" data-de="Einweisungsgrund">Reason for admission</p>
+          <strong id="assignedDiagnosis">Novel reading</strong>
+        </div>
+        <div class="mini-stamp">Admitted</div>
+      </div>
+      <p class="party-size" id="partySize">Admission party: 1 patient</p>
+      <p class="result-note" data-en="Remember who you are. You get your patient card at the door." data-de="Merken Sie sich, wer Sie sind. Ihre Patientenkarte gibt es an der Tür.">Remember who you are. You get your patient card at the door.</p>
+      <button class="confirm-button" id="closeResult" type="button" data-en="I understand" data-de="Verstanden">I understand</button>
+    </section>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
